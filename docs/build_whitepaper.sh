@@ -6,7 +6,7 @@ set -e
 
 The exact absolute path to your whitepaper
 
-TARGET_FILE="/Users/malachihooper/Documents/technical developments/NightFrame-main/docs/WHITEPAPER.md"
+TARGET_FILE="/Users/malachihooper/Documents/technical-developments/NightFrame-main/docs/WHITEPAPER.md"
 
 Dynamically generate the output path by replacing .md with .pdf
 
