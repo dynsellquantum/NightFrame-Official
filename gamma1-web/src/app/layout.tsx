@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -17,12 +17,15 @@ export const metadata: Metadata = {
   description: "Command and control interface for the NIGHTFRAME decentralized AI compute mesh. Monitor drones, submit prompts, and track the neural network economy.",
   keywords: ["AI", "mesh network", "decentralized", "neural network", "distributed computing"],
   authors: [{ name: "Project NIGHTFRAME" }],
-  themeColor: "#7c3aed",
   openGraph: {
     title: "NIGHTFRAME Console",
     description: "Decentralized AI Mesh Control Interface",
     type: "website",
   },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#7c3aed",
 };
 
 export default function RootLayout({
