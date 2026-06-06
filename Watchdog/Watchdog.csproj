@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AssemblyName>watchdog</AssemblyName>
+    <RootNamespace>NIGHTFRAME.Watchdog</RootNamespace>
+    
+    <!-- Native AOT for minimal footprint -->
+    <PublishAot Condition="'$(PublishAot)' == ''">false</PublishAot>
+    <IlcTrimMode>link</IlcTrimMode>
+    <IlcOptimizationPreference>Size</IlcOptimizationPreference>
+    <InvariantGlobalization>true</InvariantGlobalization>
+    
+    <!-- Single file -->
+    <SelfContained Condition="'$(SelfContained)' == ''">false</SelfContained>
+    <PublishSingleFile Condition="'$(PublishSingleFile)' == ''">false</PublishSingleFile>
+    
+    <!-- Stealth: no console window -->
+    <OutputType Condition="'$(Configuration)' == 'Release'">WinExe</OutputType>
+  </PropertyGroup>
+
+</Project>

@@ -1,0 +1,65 @@
+name: Build and Test
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  core:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+
+    steps:
+    - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+    
+    - name: Setup .NET
+      uses: actions/setup-dotnet@3951f0ad7a0ac05e18e89443b44330920aa54a01 # v4.3.0
+      with:
+        dotnet-version: 8.0.x
+        
+    - name: Restore dependencies
+      run: dotnet restore NIGHTFRAME.Core.sln
+      
+    - name: Build
+      run: dotnet build NIGHTFRAME.Core.sln --no-restore --configuration Release
+
+  windows-legacy:
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@3951f0ad7a0ac05e18e89443b44330920aa54a01 # v4.3.0
+      with:
+        dotnet-version: 8.0.x
+
+    - name: Restore dependencies
+      run: dotnet restore NIGHTFRAME.sln
+
+    - name: Build
+      run: dotnet build NIGHTFRAME.sln --no-restore --configuration Release
+
+  web:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+
+    - uses: actions/setup-node@1e60f620b9541dca151f88eb5c147c2964282c7f # v4.0.4
+      with:
+        node-version: 20
+        cache: npm
+        cache-dependency-path: gamma1-web/package-lock.json
+
+    - name: Install dependencies
+      run: npm ci
+      working-directory: gamma1-web
+
+    - name: Build
+      run: npm run build
+      working-directory: gamma1-web

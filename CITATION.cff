@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+message: "If you use NIGHTFRAME in research, please cite this software and its white paper."
+title: "NIGHTFRAME: A Capability-Aware Platform for Cooperative Edge Intelligence"
+type: software
+authors:
+  - family-names: Hooper
+    given-names: Malachi
+version: 2.0.0
+date-released: 2026-06-05
+license: proprietary
+keywords:
+  - distributed inference
+  - edge intelligence
+  - mesh networking
+  - cellular intelligence
+  - capability-aware scheduling
+preferred-citation:
+  type: report
+  title: "NIGHTFRAME: A Capability-Aware Platform for Cooperative Edge Intelligence"
+  authors:
+    - family-names: Hooper
+      given-names: Malachi
+  year: 2026
